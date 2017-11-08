@@ -5,6 +5,7 @@
 # gradle related
 .gradle
 build
+out/
 
 # jrebel
 rebel.xml
