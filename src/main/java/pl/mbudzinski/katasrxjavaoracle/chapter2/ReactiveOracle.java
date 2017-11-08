@@ -1,4 +1,4 @@
-package pl.mbudzinski.katasrxjavaoracle.chapter1;
+package pl.mbudzinski.katasrxjavaoracle.chapter2;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +23,9 @@ public class ReactiveOracle {
     public Observable<String> answer() {
         Random random = new Random();
         return Observable.interval(random.nextInt(3000), TimeUnit.MILLISECONDS)
-                         .concatMap(interval -> Observable.just(answerMap.get(random.nextInt(answerMap.size())))
-                                                          .delay(random.nextInt(3000), TimeUnit.MILLISECONDS)
-                         );
-
+                .concatMap(interval -> Observable.just(answerMap.get(random.nextInt(answerMap.size())))
+                        .delay(random.nextInt(3000), TimeUnit.MILLISECONDS)
+                );
     }
 
 
