@@ -24,7 +24,8 @@ public class ReactiveOracle {
         Random random = new Random();
         return Observable.interval(random.nextInt(3000), TimeUnit.MILLISECONDS)
                          .concatMap(interval -> Observable.just(answerMap.get(random.nextInt(4)))
-                         .delay(random.nextInt(3000), TimeUnit.MILLISECONDS));
+                                                          .delay(random.nextInt(3000), TimeUnit.MILLISECONDS)
+                         );
 
     }
 
