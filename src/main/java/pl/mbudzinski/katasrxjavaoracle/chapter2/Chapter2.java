@@ -9,14 +9,10 @@ public class Chapter2 {
         ReactiveOracle reactiveOracle = new ReactiveOracle();
         Pilgrim pilgrim = new Pilgrim();
 
-        Observable<String> firstAnswer = pilgrim.ask(reactiveOracle);
-        Observable<String> secondAnswer = pilgrim.ask(reactiveOracle);
-
-        Observable<String> firstAndSecond = firstAnswer.mergeWith(secondAnswer);
-
-        Observable<String> thirdAnswer = pilgrim.ask(reactiveOracle);
-
-        Observable<String> allAnswers = firstAndSecond.mergeWith(thirdAnswer);
-        allAnswers.blockingSubscribe(System.out::println);
+        Observable.merge(
+                pilgrim.ask(reactiveOracle),
+                pilgrim.ask(reactiveOracle),
+                pilgrim.ask(reactiveOracle)
+        ).blockingSubscribe(System.out::println);
     }
 }
