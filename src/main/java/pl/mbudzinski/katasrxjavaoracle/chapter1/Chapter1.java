@@ -6,7 +6,7 @@ public class Chapter1 {
     public static void main(String[] args) {
         ReactiveOracle reactiveOracle = new ReactiveOracle();
 
-        reactiveOracle.answer()
-                      .blockingSubscribe(System.out::println);
+        System.out.println(reactiveOracle.answer().blockingFirst());
+
     }
 }
